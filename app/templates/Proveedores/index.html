@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleProveedores.css') }}">
+    <script src="{{ url_for('static', filename='boot/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='boot/js/bootstrap.bundle.js') }}"></script>
+    <title>Proveedor</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff; /* Blanco */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333333; /* Negro */
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd; /* Gris claro */
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ffa500; /* Naranja */
+            color: #ffffff; /* Blanco */
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 15px;
+            margin-right: 10px;
+            border: 1px solid #000000; /* Negro */
+            color: #dc143c; /* Crimson */
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        a:hover {
+            background-color: #0ccbdf42; /* Amarillo más claro */
+            color: #ffffff; /* Blanco */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Lista de Proveedor</h1>
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tablas
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('Empleados.index') }}">Empleados</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Productos.index') }}">Productos</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Usuarios.index') }}">Clientes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Compras.index') }}">Compras</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('DetalleVentas.index') }}">DetalleVentas</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Proveedores.index') }}">Proveedores</a></li>
+                <li>
+                    <form class="d-flex" role="searc h" action="{{ url_for('Auth.logout') }}">
+                        <button class="btn btn-outline-info" type="submit">Cerrar Sesión</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <table>
+            <tr>
+                <th>Id Proveedores</th>
+                <th>Nombre Proveedores</th>
+                <th>Direccion Proveedores</th>
+                <th>Telefono Proveedores</th>
+                <th>Correo Proveedores</th>
+                <th>Acciones</th>
+            </tr>
+            {% for Proveedores in data %}
+            <tr>
+                <td>{{ Proveedores.idProveedores }}</td>
+                <td>{{ Proveedores.nombreProveedores }}</td>
+                <td>{{ Proveedores.direccionProveedores }}</td>
+                <td>{{ Proveedores.telefonoProveedores }}</td>
+                <td>{{ Proveedores.correoProveedores }}</td>
+                <td>
+                    <a href="{{ url_for('Proveedores.edit', idProveedores=Proveedores.idProveedores) }}"
+                        class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('Proveedores.delete', idProveedores=Proveedores.idProveedores) }}"
+                        class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</body>
+
+</html>

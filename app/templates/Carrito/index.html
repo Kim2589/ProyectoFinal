@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Gris claro */
+            margin: 0;
+            padding: 0;
+            color: #333; /* Texto en negro */
+        }
+
+        div {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Más negro para la sombra */
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #ffd700; /* Amarillo más brillante */
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 15px;
+            transition: background-color 0.3s;
+        }
+
+        li:hover {
+            background-color: #f5f5f5; /* Gris más claro al pasar el mouse */
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input {
+            width: 60px;
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #ffd700; /* Amarillo más brillante */
+            color: #333; /* Texto en negro */
+            padding: 8px 16px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff8c00; /* Naranja más brillante */
+        }
+    </style>
+    <title>Carrito de Compras</title>
+</head>
+
+<body>
+    <div>
+        <h1>Productos y Servicios</h1>
+        <ul>
+            {% for producto in productos %}
+            {% for servicio in servicios %} <!-- Corregido el nombre de la variable -->
+            <li>
+                {{ producto.nombre }} - ${{ producto.precio }}
+                <form action="/agregar/{{ producto.id }}" method="post">
+                    <input type="number" name="cantidad" value="1" min="1">
+                    <button type="submit">Agregar al carrito</button>
+                </form>
+
+                {{ servicio.nombre }} - ${{ servicio.precio }} <!-- Corregido el acceso a los atributos del servicio -->
+                <form action="/agregar/{{ servicio.id }}" method="post">
+                    <input type="number" name="cantidad" value="1" min="1">
+                    <button type="submit">Agregar al carrito</button>
+                </form>
+            </li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
+
+
+

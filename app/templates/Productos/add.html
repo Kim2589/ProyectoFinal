@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Productos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000; /* Negro */
+            color: #fff; /* Blanco */
+            margin: 20px;
+        }
+
+        h1 {
+            color: #ff8c00; /* Naranja */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background-color: #f0c14b; /* Amarillo */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .colorcito {
+            color: #000; /* Negro */
+        }
+
+        .btn-primary {
+            background-color: #ff8c00; /* Naranja */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #666; /* Gris oscuro */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Agregar Productos</h1>
+    <form action="{{ url_for('Productos.add') }}" method="post" enctype="multipart/form-data">
+        <div class="mb-3 colorcito">
+            <label for="exampleInputNombreProdutos" class="form-label">Nombre Productos</label>
+            <input type="text" name="nombreProductos" class="form-control" id="exampleInputNombreProductos"
+                aria-describedby="nombreProductosHelp" required>
+        </div>
+        <div class="mb-3 colorcito">
+            <label for="exampleInputDescripcion1" class="form-label">Descripcion Productos</label>
+            <input type="text" name="descripcionProductos" class="form-control" id="exampleInputDescripcion1" required>
+        </div>
+        <div class="mb-3 colorcito">
+            <label for="exampleInputPrecio1" class="form-label">Precio Productos</label>
+            <input type="number" name="precioProductos" class="form-control" id="exampleInputPrecio1" required>
+        </div>
+        <div class="mb-3 colorcito">
+            <label for="exampleInputFecha1" class="form-label">Fecha Caducidad Productos</label>
+            <input type="date" name="fechaCaducidadProductos" class="form-control" id="exampleInputFecha1" required>
+        </div>
+        <div class="mb-3 colorcito">
+            <label for="img" class="form-label">Imagen:</label>
+            <input type="file" accept=".png, .jpg, .jpeg" name="nombreImagen" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar Productos</button>
+    </form>
+</body>
+
+</html>

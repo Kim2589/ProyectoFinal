@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleEmpleados.css') }}">
+    <script src="{{ url_for('static', filename='boot/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='boot/js/bootstrap.bundle.js') }}"></script>
+    
+    <title>Empleado</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Fondo gris claro */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333; /* Texto gris oscuro */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ffd600; /* Fondo amarillo */
+            color: #333; /* Texto gris oscuro */
+            font-weight: bold;
+        }
+
+        td {
+            color: #333; /* Texto gris oscuro */
+        }
+
+        td a {
+            color: #e65100; /* Enlaces naranjas */
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
+
+        td a:hover {
+            text-decoration: none;
+            color: #d84315; /* Color naranja más oscuro al pasar el ratón */
+        }
+
+        .dropdown {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-toggle {
+            background-color: #e65100; /* Fondo naranja */
+            color: #fff; /* Texto blanco */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            min-width: 200px;
+            background-color: #fff; /* Fondo blanco */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #333; /* Texto gris oscuro */
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #ffd600; /* Fondo amarillo al pasar el ratón */
+            color: #333; /* Texto gris oscuro */
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div>
+        <h1>Lista de Empleado</h1>
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Tablas
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('Empleados.index') }}">Empleados</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Productos.index') }}">Productos</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Usuarios.index') }}">Clientes</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Compras.index') }}">Compras</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('DetalleVentas.index') }}">DetalleVentas</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('Proveedores.index') }}">Proveedores</a></li>
+                <li>
+                    <form class="d-flex" role="search" action="{{ url_for('Auth.logout') }}">
+                        <button class="btn btn-outline-info" type="submit">Cerrar Sesión</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <table>
+            <tr>
+                <th>Id Empleados</th>
+                <th>Nombre Empleados</th>
+                <th>Direccion Empleados</th>
+                <th>Telefono Empleados</th>
+                <th>Acciones</th>
+            </tr>
+            {% for Empleados in data %}
+            <tr>
+                <td>{{ Empleados.idEmpleados }}</td>
+                <td>{{ Empleados.nombreEmpleados }}</td>
+                <td>{{ Empleados.direccionEmpleados }}</td>
+                <td>{{ Empleados.telefonoEmpleados }}</td>
+                <td>
+                    <a href="{{ url_for('Empleados.edit', idEmpleados=Empleados.idEmpleados) }}" class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('Empleados.delete', idEmpleados=Empleados.idEmpleados) }}" class="btn btn-danger">Eliminar</a>
+                    <!-- Agrega aquí el enlace para eliminar -->
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('Empleados.add') }}">Agregar Empleado</a>
+        <br>
+    </div>
+</body>
+
+</html>

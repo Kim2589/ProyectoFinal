@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <style>
+       body {
+            background-color: #f8f9fa; /* Gris claro */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+        }
+
+        .card-header {
+            background-color: #ffd700; /* Amarillo más brillante */
+            color: #333; /* Gris oscuro */
+            text-align: center;
+            font-size: 24px;
+            padding: 15px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .boton {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-login,
+        .btn-create-account {
+            width: 48%;
+        }
+
+        @media (max-width: 768px) {
+            .btn-login,
+            .btn-create-account {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+
+        /* Estilo para la imagen en forma de estrella */
+        .star-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            margin: 0 auto;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <img src="{{ url_for('static', filename='imagenes/Gensolsas.jpg') }}" alt="Generals " width="200" height="100">
+                    
+            </div>
+        </div>
+
+        <div class="row mt-4"> <!-- Agregado espacio entre la imagen y la tabla -->
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Inicio</h2>
+                    </div>
+                    <div class="card-body">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <form method="post" action="{{ url_for('Auth.login') }}">
+                            <div class="form-group">
+                                <label for="nombre">Nombre de Usuario</label>
+                                <input type="text" name="nombreUsuarios" id="nombre" class="form-control mb-3" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasena">Contraseña</label>
+                                <input type="password" name="contrasenaUsuarios" id="contrasena" class="form-control mb-3"
+                                    required>
+                            </div>
+                            <div class="boton">
+                                <button type="submit" class="btn btn-warning btn-login">Iniciar Sesión</button>
+                                <a href="{{ url_for('Usuarios.add') }}" class="btn btn-warning btn-create-account">Crear
+                                    Cuenta</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

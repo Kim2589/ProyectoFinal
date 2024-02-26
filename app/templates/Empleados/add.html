@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleEmpleados.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Fondo gris claro */
+            color: #495057; /* Texto gris oscuro */
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333; /* Título gris oscuro */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+      
+        form {
+            max-width: 500px;
+            margin: auto;
+            background-color: #ffd600; /* Fondo amarillo */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #ff6b00; /* Fondo naranja oscuro para el botón */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #e65100; /* Fondo naranja más oscuro al pasar el ratón */
+        }
+    </style>
+    <title>Agregar Empleados</title>
+</head>
+
+<body>
+    <h1>Agregar Empleados</h1>
+    <form action="{{ url_for('Empleados.add') }}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputNombreEmpleados" class="form-label">Nombre Empleados</label>
+            <input type="text" name="nombreEmpleados" class="form-control" id="exampleInputNombreEmpleados"
+                aria-describedby="nombreEmpleadosHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDireccion1" class="form-label">Direccion Empleados</label>
+            <input type="text" name="direccionEmpleados" class="form-control" id="exampleInputDireccion1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputTelefono1" class="form-label">Telefono Empleados</label>
+            <input type="text" name="telefonoEmpleados" class="form-control" id="exampleInputTelefono1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputContrasena1" class="form-label">Contrasena Empleados</label>
+            <input type="password" name="contrasenaEmpleados" class="form-control" id="exampleInputContrasena1">
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Empleado</button>
+    </form>
+</body>
+
+</html>

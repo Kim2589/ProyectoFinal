@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <title>Agregar Clientes</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Blanco */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .miDiv {
+            background-color: #ffffff; /* Blanco */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333333; /* Negro */
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .cuadro {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #ffa500; /* Naranja */
+            border-color: #ffa500; /* Naranja */
+            width: 100%;
+            color: #ffffff; /* Blanco */
+        }
+
+        .btn-primary:hover {
+            background-color: #ff8c00; /* Naranja más oscuro */
+            border-color: #ff8c00; /* Naranja más oscuro */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="miDiv">
+            <h1>Agregar Usuarios</h1>
+            <form action="{{ url_for('Usuarios.add') }}" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputNombreUsuarios" class="form-label">Nombre Usuarios</label>
+                    <input type="text" name="nombreUsuarios" class="form-control cuadro" id="exampleInputNombreUsuarios"
+                        aria-describedby="nombreUsuariosHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputDireccion1" class="form-label">Direccion Usuarios</label>
+                    <input type="text" name="direccionUsuarios" class="form-control cuadro" id="exampleInputDireccion1"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputTelefono1" class="form-label">Telefono Usuarios</label>
+                    <input type="text" name="telefonoUsuarios" class="form-control cuadro" id="exampleInputTelefono1"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputCorreo1" class="form-label">Correo Usuarios</label>
+                    <input type="email" name="correoUsuarios" class="form-control cuadro" id="exampleInputCorreo1"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputContrasena1" class="form-label">Contrasena Usuarios</label>
+                    <input type="password" name="contrasenaUsuarios" class="form-control cuadro"
+                        id="exampleInputContrasena1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Agregar Usuarios</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

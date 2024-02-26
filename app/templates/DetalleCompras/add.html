@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleDetalleC.css') }}">
+    <title>Agregar Detalle Compras</title>
+</head>
+
+<body style="background-color: #FFFACD; color: #000000;">
+    <h1 style="color: #FFA500;">Agregar Detalle Compras</h1>
+    <form action="{{ url_for('DetalleCompras.add') }}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputCantidadDetalle" class="form-label" style="color: #000000;">Cantidad Detalle</label>
+            <input type="number" name="cantidadDetalle" class="form-control" id="exampleInputCantidadDetalle"
+                aria-describedby="cantidadDetalleHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputSub1" class="form-label" style="color: #000000;">SubTotal Detalle</label>
+            <input type="int" name="subTotalDetalle" class="form-control" id="exampleInputSub1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputId1" class="form-label" style="color: #000000;">Id Productos</label>
+            <input type="number" name="idProductos" class="form-control" id="exampleInputId1">
+        </div>
+    
+        <div class="mb-3">
+            <label for="exampleInputId1" class="form-label" style="color: #000000;">Id Compras</label>
+            <input type="number" name="idCompras" class="form-control" id="exampleInputId1">
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: #FF8C00; border-color: #FF8C00;">Agregar Detalle Compras</button>
+    </form>
+</body>
+
+</html>

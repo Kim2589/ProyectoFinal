@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='boot/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleDetalleV.css') }}">
+    <title>Agregar  Ventas</title>
+</head>
+
+<body>
+    <h1>Agregar  Ventas</h1>
+    <form action="{{ url_for('DetalleVentas.add') }}" method="post">
+        <div class="mb-3">
+            <label for="exampleInputFechaVenta" class="form-label">FechaVentas</label>
+            <input type="int" name="fechaVenta" class="form-control" id="exampleInputFechaVentas"
+                aria-describedby="FechaVenta">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputCantidadVenta" class="form-label">Cantidad Venta</label>
+            <input type="int" name="cantidadVenta" class="form-control" id="exampleInputCantidadVenta"
+                aria-describedby="cantidadVenta">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleTelefonoUsuario" class="form-label">Telefono Usuario </label>
+        <input type="int" name="telefonoUsuario" class="form-control" id="exampleInputTelefonoUsuario"
+            aria-describedby="telefonoUsuario">
+    </div>
+        
+        <div class="mb-3">
+            <label for="exampleInputId1" class="form-label">Id Usuarios</label>
+            <input type="int" name="idUsuarios" class="form-control" id="exampleInputId1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputId1" class="form-label">Id Empleados</label>
+            <input type="int" name="idEmpleados" class="form-control" id="exampleInputId1">
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar  Ventas</button>
+    </form>
+</body>
+
+</html>
